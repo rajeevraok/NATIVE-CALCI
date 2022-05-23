@@ -53,13 +53,34 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
         if (TextUtils.isEmpty(Num1.getText().toString()) || TextUtils.isEmpty(Num2.getText().toString()))
             return;
 
+        // read EditText and fill variables with numbers
         num1 = Float.parseFloat(Num1.getText().toString());
         num2 = Float.parseFloat(Num2.getText().toString());
 
+        // defines the button that has been clicked and performs the corresponding operation
+        // write operation into oper, we will use it later for output
         switch (v.getId())
         {
             case R.id.Add:
                 oper = "+";
                 result = num1 + num2;
-
-
+                break;
+            case R.id.Sub:
+                oper = "-";
+                result = num1 - num2;
+                break;
+            case R.id.Mul:
+                oper = "*";
+                result = num1 * num2;
+                break;
+            case R.id.Div:
+                oper = "/";
+                result = num1 / num2;
+                break;
+            default:
+                break;
+        }
+        // form the output line
+        Result.setText(num1 + " " + oper + " " + num2 + " = " + result);
+    }
+}
